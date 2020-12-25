@@ -19,7 +19,8 @@
     // height: 84px;
     // box-sizing: border-box;
     // text-align:center;
-        margin-top: 32px;
+        margin: 32px auto;
+
         //中央よせが効かない問題
     img {
         width: 76.88px;
@@ -27,5 +28,36 @@
         border-radius: 50%;
         margin:0 auto;
         display:block;
+    }
+}
+
+.numbers {
+    text-align:center;
+    display: flex;
+    justify-content: space-around;
+    margin: 0 35px;
+
+    &_post {
+        display: block;
+        margin: 5px 5px;
+        p {
+            font-size: 12px;
+        }
+    }
+
+    &_followers {
+        display: block;
+        margin: 5px 5px;
+        p {
+            font-size: 12px;
+        }
+    }
+
+    &_following {
+        display: block;
+        margin: 5px 5px;
+        p {
+            font-size: 12px;
+        }
     }
 }

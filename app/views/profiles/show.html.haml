@@ -1,4 +1,16 @@
-.account_name
-    %p= current_user.account_name
-.profile_img_border
-    = image_tag current_user.avatar_image
+.container
+    .account_name
+        %p= current_user.account_name
+    .profile_img_border
+        = image_tag current_user.avatar_image
+    .numbers
+        .numbers_post
+            %p 44
+            %P Posts
+        .numbers_followers
+            %p 22
+            %P followers
+        .numbers_following
+            %p 100
+            %P following
+
