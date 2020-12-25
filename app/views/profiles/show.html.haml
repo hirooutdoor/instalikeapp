@@ -2,7 +2,9 @@
     .account_name
         %p= current_user.account_name
     .profile_img_border
-        = image_tag current_user.avatar_image
+        %label
+            %input{:hidden => "", :type => "file"}/
+            = image_tag current_user.avatar_image
     .numbers
         .numbers_post
             %p 44
