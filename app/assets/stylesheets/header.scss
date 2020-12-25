@@ -1,0 +1,49 @@
+@import 'variables';
+
+$avatar-size: 40px;
+$header-padding-y: 16px;
+$back-icon-size: 30px;
+
+
+.header {
+    border-bottom: 1px solid #c5c1c1;
+    display: flex;
+    justify-content: space-between;
+
+    p {
+        font-size: 20px;
+        margin: 15px 20px;
+        // padding-top: 10px;
+    }
+
+
+    &_avatar {
+        width: $avatar-size;
+        height: $avatar-size;
+        border-radius: 100%;
+        margin: ($avatar-size - $back-icon-size) / 2 8px 0;
+        margin-right: 20px;
+     }
+
+     &_loginBtn {
+        background-color: $primary-color;
+        height: $avatar-size;
+        border-radius: 8px;
+        font-size: 12px;
+        padding: 12px 14px;
+        margin: 10px 24px;
+        color: white;
+     }
+
+     &_logos {
+        min-width: 0;
+        display: flex;
+
+         img {
+         cursor: pointer;
+         width: $back-icon-size;
+         height: $back-icon-size;
+         margin: 16px 2px 8px 0px;
+      }
+     }
+}  

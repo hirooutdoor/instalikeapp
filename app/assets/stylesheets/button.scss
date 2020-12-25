@@ -1,0 +1,27 @@
+@import './variables'; 
+
+.btn-primary {
+    position: absolute;
+    background-color: $primary-color;
+    border: none;
+    width: 90%;
+    text-align: center;
+    color: white;
+    padding: 16px 0;
+    font-weight: bold;
+    border-radius: 10px;
+    top: 720px;
+    margin-top: 20px;
+}
+
+.btn-secondary {
+    background-color: $primary-color;
+    border: none;
+    width: 100%;
+    text-align: center;
+    color: white;
+    padding: 16px 0;
+    font-weight: bold;
+    border-radius: 10px;
+  }
+  
