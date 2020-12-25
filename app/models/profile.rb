@@ -12,4 +12,8 @@
 #  index_profiles_on_user_id  (user_id)
 #
 class Profile < ApplicationRecord
+    belongs_to :user
+    has_one_attached :avatar
+
+    
 end
