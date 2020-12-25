@@ -29,4 +29,17 @@ class User < ApplicationRecord
 
   validates :account_name, presence: true, uniqueness: true
   validates :email, uniqueness: true
+
+  def prepare_profile
+    profile || build_profile
+  end
+
+  def avatar_image
+    if profile&.avatar&.attached?
+      profile.avatar
+    else
+      'unnamed.png'
+    end
+  end
+
 end
