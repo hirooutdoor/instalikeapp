@@ -40,8 +40,12 @@ class User < ApplicationRecord
     if profile&.avatar&.attached?
       profile.avatar
     else
-      'unnamed.png'
+      'Ellipse.png'
     end
+  end
+
+  def display_name
+    profile&.account_name || self.email.split('@').first
   end
 
 end
