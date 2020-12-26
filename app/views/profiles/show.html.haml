@@ -1,0 +1,18 @@
+.container
+    .account_name
+        %p= current_user.account_name
+
+    .border_room
+        = render 'form', profile: current_user
+
+    .numbers
+        .numbers_post
+            %p 44
+            %P Posts
+        .numbers_followers
+            %p 22
+            %P followers
+        .numbers_following
+            %p 100
+            %P following
+
