@@ -1,0 +1,24 @@
+.timeline_body
+    = link_to article_path(article) do
+        .timeline_article
+            .timeline_content
+                = link_to profile_path do
+                    .timeline_content_top_avatar
+                        = image_tag article.user.avatar_image
+                    .timeline_content_top_info
+                        .content_author
+                            %p= article.author_name
+                        .content_created
+                            %p= article.created_at
+                .timeline_content_image
+                    = image_tag 'unnamed.png'
+                .timeline_content_icons
+                    = image_tag 'active_like.png'
+                    = image_tag 'comment.png'
+                    = image_tag 'share.png'
+                .timeline_content_likes
+                    %p nezuko19 and 2,000 others liked
+                .timeline_content_texts
+                    %p= article.author_name
+                    %p= article.content
+

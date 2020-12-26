@@ -1,0 +1,18 @@
+.container
+  - @article.errors.full_messages.each do |message|
+    %li= message
+  = form_with model: @article, url: articles_path, method: :post, local: true do |f|
+    .form_header
+      = link_to 'Cancel', root_path, class: 'post_cancel'
+      %h1.header_name Status
+      .actions
+        = f.submit :Post, class: 'post_btn'
+    .profile_img_border
+      = image_tag current_user&.avatar_image, class: ''
+      %p.account_name= current_user&.account_name
+    .item_content_field
+      %label.content
+      = f.text_field :content, class: 'text', placeholder: 'What\'s on your mind?'
+    .post_image_field
+      = f.label :photos, '+ Album', class: "image_input_btn"
+      = f.file_field :photos, multiple: true, class: 'post_photos hidden'
