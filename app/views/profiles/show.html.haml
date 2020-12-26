@@ -1,6 +1,10 @@
 .container
-    .account_name
-        %p= current_user.account_name
+    .profile_header
+        .back_arrow
+            = link_to 'javascript:history.back()' do
+                %i.fas.fa-arrow-left
+        .account_name
+            %p= current_user.account_name
 
     .border_room
         = render 'form', profile: current_user

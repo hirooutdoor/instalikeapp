@@ -1,7 +1,15 @@
-.account_name {
+.profile_header {
+    display: flex;
+}
+
+.back_arrow {
     margin-top: 46px;
+    position: absolute;
+}
+
+.account_name {
+    margin: 46px auto 0 auto;
     text-align: center;
-    flex-wrap: nowrap;
     align-items: center;
     p {
         display: inline-block;
@@ -34,12 +42,10 @@
 .numbers {
     text-align:center;
     display: flex;
-    justify-content: space-around;
-    margin: 0 35px;
 
     &_post {
         display: block;
-        margin: 5px 5px;
+        margin: 5px auto;
         p {
             font-size: 12px;
         }
@@ -48,6 +54,8 @@
     &_followers {
         display: block;
         margin: 5px 5px;
+        padding-left: 10px;
+        align-items: center;
         p {
             font-size: 12px;
         }
@@ -55,7 +63,7 @@
 
     &_following {
         display: block;
-        margin: 5px 5px;
+        margin: 5px auto;
         p {
             font-size: 12px;
         }
