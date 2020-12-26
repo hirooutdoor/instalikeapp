@@ -1,0 +1,52 @@
+$avatar-size: 32px;
+$container-padding: 12px;
+
+.timeline_body {
+    margin-top: 46px;
+    
+    .timeline_article {
+    margin-top: 100px;
+    display: flex;
+
+        .timeline_content {
+            margin: 0 auto;
+
+            &_top {
+                display: flex;
+                text-decoration: none;
+
+                &_avatar {
+                    img {
+                        width: $avatar-size;
+                        height: $avatar-size;
+                        border-radius: 100%;
+                        margin-right: 8px;
+                        margin-top: 8px;
+                        display: flex;
+                    }
+                }
+                &_info {
+                    margin-left: 8px;
+                    color: #333333;
+                    .content_author {
+                        font-size: 14px
+                    }
+                    .content_created {
+                        font-size: 12px
+                    }
+                }
+            }
+
+            &_image img {
+                height: 180px;
+                position: relative;
+                overflow: hidden;
+                margin: $container-padding $container-padding; 
+            }
+
+            &_likes, &_texts {
+                font-size: 12px;
+            }
+        }
+    }
+}

@@ -1,3 +1,5 @@
+$avatar-size: 76.88px;
+
 .profile_header {
     display: flex;
 }
@@ -31,11 +33,8 @@
 
         //中央よせが効かない問題
     img {
-        width: 76.88px;
-        height: 76.88px;
-        border-radius: 50%;
-        margin:0 auto;
-        display:block;
+        width: $avatar-size;
+        height: $avatar-size;
     }
 }
 
@@ -70,6 +69,12 @@
     }
 }
 
-.hidden {
+.profile_img_border img {
+    border-radius: 50%;
+    margin:0 auto;
+    display:block;
+}
+    
+    .hidden {
     display: none;
   }

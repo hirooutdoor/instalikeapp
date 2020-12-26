@@ -3,6 +3,7 @@
 @import 'button'; 
 @import 'header';
 @import 'profile';
+@import 'timeline';
 
 html {
   word-spacing: 1px;
@@ -31,6 +32,10 @@ body {
 a {
     text-decoration: none;
     color: $text-base-color;
+}
+
+p {
+  font-family: Poppins;
 }
 
 .container {
