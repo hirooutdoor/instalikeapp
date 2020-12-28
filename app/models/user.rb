@@ -22,6 +22,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
+  has_many :articles, dependent: :destroy
+
   has_one :profile, dependent: :destroy
   
   devise :database_authenticatable, :registerable,
@@ -38,8 +40,12 @@ class User < ApplicationRecord
     if profile&.avatar&.attached?
       profile.avatar
     else
-      'unnamed.png'
+      'Ellipse.png'
     end
+  end
+
+  def display_name
+    profile&.account_name || self.email.split('@').first
   end
 
 end
