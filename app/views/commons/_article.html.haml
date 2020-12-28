@@ -11,12 +11,11 @@
                         .content_created
                             %p= article.created_at
                 .timeline_content_image
-                    - article.images.each do |image|
-                        = image_tag image
+                    = render 'commons/images', article: article
                 .timeline_content_icons
                     = image_tag 'active_like.png'
                     = image_tag 'comment.png'
-                    %a{:href => "//twitter.com/share"}
+                    = link_to 'https://twitter.com/share?ref_src=twsrc%5Etfw', target: '_blankz' do
                         = image_tag 'share.png'
                 .timeline_content_likes
                     %p nezuko19 and 2,000 others liked
@@ -24,3 +23,4 @@
                     %p= article.author_name
                     %p= article.content
 
+= javascript_pack_tag 'timeline'
