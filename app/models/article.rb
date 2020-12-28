@@ -15,6 +15,7 @@
 class Article < ApplicationRecord
 
     belongs_to :user
+    has_many_attached :images
 
     def author_name
         user.display_name
