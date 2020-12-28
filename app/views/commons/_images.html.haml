@@ -1,5 +1,15 @@
 - if article.images.attached?
-  - if article.images.size == 3
+  - if article.images.size == 4
+    .grid-img
+      .grid-img-one#item1
+        = image_tag article.images.first, class: 'img'
+      .grid-img-two#item2
+        = image_tag article.images.second, class: 'img'
+      .grid-img-third#item3
+        = image_tag article.images.third, class: 'img'
+      .grid-img-third#item4
+        = image_tag article.images.fourth, class: 'img' 
+  - elsif article.images.size == 3
     .grid-img
       .grid-img-one#itema
         = image_tag article.images.first, class: 'img'
