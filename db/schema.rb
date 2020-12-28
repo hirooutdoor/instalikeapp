@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2020_12_28_055757) do
-=======
 ActiveRecord::Schema.define(version: 2020_12_28_070526) do
->>>>>>> comment
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,8 +44,6 @@ ActiveRecord::Schema.define(version: 2020_12_28_070526) do
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
-<<<<<<< HEAD
-=======
   create_table "comments", force: :cascade do |t|
     t.bigint "article_id", null: false
     t.text "content", null: false
@@ -58,7 +52,6 @@ ActiveRecord::Schema.define(version: 2020_12_28_070526) do
     t.index ["article_id"], name: "index_comments_on_article_id"
   end
 
->>>>>>> comment
   create_table "likes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "article_id", null: false
