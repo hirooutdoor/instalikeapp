@@ -5,6 +5,7 @@
 @import 'profile';
 @import 'timeline';
 @import 'images';
+@import 'flash';
 
 html {
   word-spacing: 1px;
@@ -44,3 +45,6 @@ p {
   padding: 16px 16px;
 }
 
+.hidden {
+  display: none;
+}
