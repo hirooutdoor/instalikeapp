@@ -23,6 +23,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   has_many :articles, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   has_one :profile, dependent: :destroy
   
@@ -32,6 +33,11 @@ class User < ApplicationRecord
   validates :account_name, presence: true, uniqueness: true
   validates :email, uniqueness: true
 
+
+  def has_liked?(article)
+    likes.exists?(article_id: article.id)
+  end
+  
   def prepare_profile
     profile || build_profile
   end
