@@ -1,9 +1,34 @@
 import $ from 'jquery'
-import axios from 'axios'
-import { csrfToken } from 'rails-ujs'
-axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
+import axios from 'modules/axios'
+import {
+    listenInactiveHeartEvent,
+    listenActiveHeartEvent
+} from 'modules/handle_heart'
 
-//   スライドショー機能
+// like func
+const handleHeartDisplay = (hasLiked) => {
+    if (hasLiked) {
+        $('.active-heart').removeClass('hidden')
+    } else {
+        $('.inactive-heart').removeClass('hidden')
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const dataset = $('#article-show').data()
+    const articleId = dataset.articleId
+
+    axios.get(`/api/articles/${articleId}/like`)
+        .then((response) => {
+            const hasLiked = response.data.hasLiked
+            handleHeartDisplay(hasLiked)
+        })
+
+    listenInactiveHeartEvent(articleId)
+    listenActiveHeartEvent(articleId)
+})
+
+//   slideshow func
 document.addEventListener('DOMContentLoaded', () => {
     $('.slideshow').each(function () {
       var container = $('.slideshow'),
