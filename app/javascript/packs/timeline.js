@@ -5,7 +5,7 @@ import {
     listenActiveHeartEvent
 } from 'modules/handle_heart'
 
-// like func
+// like def
 const handleHeartDisplay = (hasLiked) => {
     if (hasLiked) {
         $('.active-heart').removeClass('hidden')
@@ -14,6 +14,59 @@ const handleHeartDisplay = (hasLiked) => {
     }
 }
 
+// comment def
+const handleCommentForm = () => {
+    $('.show_comment_form').on('click', () => {
+      $('.show_comment_form').addClass('hidden')
+      $('.comment_text_area').removeClass('hidden')
+    })
+  }
+  
+  
+  const appendNewComment = (comment, user) => {
+    $('.comment-info').append(
+      `<div class="user-account"><p>${(comment.content)}</p></div>`
+    )
+    $('.comment-info').append(
+      `<div class="comment-content"><p>${(comment.user_name)}</p></div>`
+    )
+    $('.comment-image').append(
+      `<div><img class="comment-avatar"src="${(comment.avatar_image)}"</img></div>`
+    )
+  }
+  
+// comment func
+  document.addEventListener('DOMContentLoaded', () => {
+    const dataset = $('#article-show').data()
+    const articleId = dataset.articleId
+    axios.get(`/api/articles/${articleId}/comments`)
+      .then((response) => {
+        const comments = response.data
+        comments.forEach((comment) => {
+          appendNewComment(comment)
+        })
+      })
+  
+      handleCommentForm()
+  
+    $('.add_comment_btn').on('click', () => {
+      const content = $('#comment_content').val()
+      if (!content) {
+        window.alert('コメントを入力して下さい')
+      } else {
+        axios.post(`/api/articles/${articleId}/comments`, {
+          comment: {content: content}
+        })
+          .then((res) => {
+            const comment = res.data
+            appendNewComment(comment)
+            $('#comment_content').val('')
+          })
+      }
+    })
+})
+
+// like func
 document.addEventListener('DOMContentLoaded', () => {
     const dataset = $('#article-show').data()
     const articleId = dataset.articleId
@@ -28,140 +81,3 @@ document.addEventListener('DOMContentLoaded', () => {
     listenActiveHeartEvent(articleId)
 })
 
-//   slideshow func
-document.addEventListener('DOMContentLoaded', () => {
-    $('.slideshow').each(function () {
-      var container = $('.slideshow'),
-          slideGroup = container.find('.slideshow_slides_1'),
-          slides = slideGroup.find('.slide'),
-          nav = container.find('.slideshow_nav'),
-          indicator = container.find('.slideshow_indicator_1'),
-  
-          slideCount = slideGroup.length,
-          indicatorHTML = '',
-          currentIndex = 0,
-          duration = 500;
-      
-      slides.each(function (i) {
-        if(i < 3) {
-           $(this).css({left: 100 * i + '%'});
-          indicatorHTML += '<a href = "#">' + ('▪︎') + '</a>';
-        } else {
-          return false;
-        } 
-      });
-  
-      indicator.html(indicatorHTML);
-  
-      function goToSlide (index) {
-          slideGroup.animate({left: -100 * index + '%'}, duration);
-          currentIndex = index;
-          updateNav();
-      }
-  
-      function updateNav () {
-          indicator.find('a').removeClass('active').eq(currentIndex).addClass('active');
-      }
-  
-      indicator.on('click', 'a', function (event) {
-          event.preventDefault();
-          if (!$(this).hasClass('prev')) {
-              goToSlide($(this).index());
-          } 
-      });
-  
-      goToSlide(currentIndex);
-    });
-  });
-  
-  
-  document.addEventListener('DOMContentLoaded', () => {
-    $('.slideshow').each(function () {
-      var container = $('.slideshow'),
-          slideGroup = container.find('.slideshow_slides_2'),
-          slides = slideGroup.find('.slide'),
-          nav = container.find('.slideshow_nav'),
-          indicator = container.find('.slideshow_indicator_2'),
-  
-          slideCount = slideGroup.length,
-          indicatorHTML = '',
-          currentIndex = 0,
-          duration = 500;
-      
-      slides.each(function (i) {
-        if(i < 3) {
-           $(this).css({left: 100 * i + '%'});
-          indicatorHTML += '<a href = "#">' + ('▪︎') + '</a>';
-        } else {
-          return false;
-        } 
-      });
-  
-      indicator.html(indicatorHTML);
-  
-      function goToSlide (index) {
-          slideGroup.animate({left: -100 * index + '%'}, duration);
-          currentIndex = index;
-          updateNav();
-      }
-  
-      function updateNav () {
-          indicator.find('a').removeClass('active').eq(currentIndex).addClass('active');
-      }
-  
-      indicator.on('click', 'a', function (event) {
-          event.preventDefault();
-          if (!$(this).hasClass('prev')) {
-              goToSlide($(this).index());
-          } 
-      });
-  
-      goToSlide(currentIndex);
-    });
-  });
-  
-  
-  document.addEventListener('DOMContentLoaded', () => {
-    $('.slideshow').each(function () {
-      var container = $('.slideshow'),
-          slideGroup = container.find('.slideshow_slides_3'),
-          slides = slideGroup.find('.slide'),
-          nav = container.find('.slideshow_nav'),
-          indicator = container.find('.slideshow_indicator_3'),
-  
-          slideCount = slideGroup.length,
-          indicatorHTML = '',
-          currentIndex = 0,
-          duration = 500;
-      
-      slides.each(function (i) {
-        if(i < 3) {
-           $(this).css({left: 100 * i + '%'});
-          indicatorHTML += '<a href = "#">' + ('▪︎') + '</a>';
-        } else {
-          return false;
-        } 
-      });
-  
-      indicator.html(indicatorHTML);
-  
-      function goToSlide (index) {
-          slideGroup.animate({left: -100 * index + '%'}, duration);
-          currentIndex = index;
-          updateNav();
-      }
-  
-      function updateNav () {
-          indicator.find('a').removeClass('active').eq(currentIndex).addClass('active');
-      }
-  
-      indicator.on('click', 'a', function (event) {
-          event.preventDefault();
-          if (!$(this).hasClass('prev')) {
-              goToSlide($(this).index());
-          } 
-      });
-  
-      goToSlide(currentIndex);
-    });
-  });
