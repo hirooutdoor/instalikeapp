@@ -1,1 +1,31 @@
-%p show
+.inner.comment#article-show{data: {article_id: @article.id}}
+  .header.comment_top
+    .comment_top_back
+      = link_to 'javascript:history.back()', class: 'to_account' do
+        %i.fas.fa-arrow-left
+    %h1.to_profile Comments
+
+  .comment_index
+    - @comments.each do |comment|
+      .comment_account
+        - if comment.user&.persisted? && comment.user&.avatar_image
+          = image_tag comment.user.avatar_image, class: 'avatar_present_img'
+        - else
+          = image_tag 'Ellipse.svg', class: 'avatar_present_img'
+        .comment_wrap
+          .comment_account_info
+            = link_to profile_path(comment.user) do
+              %p= comment.user.display_name
+          .comment_body_right_content
+            = comment.content
+
+  
+  .comments_container
+    .comment_new.show_comment_form
+      = image_tag 'comment.png'
+    .comment_text_area.hidden
+      = text_area_tag :comment_content, ''
+      .comment_new.add_comment_btn
+        %span コメントを追加
+
+= javascript_pack_tag 'timeline'

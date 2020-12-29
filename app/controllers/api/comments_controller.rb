@@ -2,9 +2,9 @@ class Api::CommentsController < Api::ApplicationController
 
     def index
         article = Article.find(params[:article_id])
-        comments = article.comments
+        @comments = article.comments
 
-        render json: comments
+        render json: @comments
     end
 
     def create
@@ -12,7 +12,7 @@ class Api::CommentsController < Api::ApplicationController
         @comment = article.comments.build(comment_params)
         @comment.save!
 
-        render json: @comment
+        render json: @comment, include: {user: [ :profile]}
     end
 
     private
