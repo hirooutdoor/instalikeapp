@@ -55,4 +55,8 @@ class User < ApplicationRecord
     profile&.account_name || self.email.split('@').first
   end
 
+  def user_name
+    @comment.user.display_name
+  end
+
 end
