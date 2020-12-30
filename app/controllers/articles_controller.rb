@@ -1,5 +1,4 @@
 class ArticlesController < ApplicationController
-    before_action :set_article, only: [:show]
     before_action :authenticate_user!
 
     def index
@@ -7,6 +6,7 @@ class ArticlesController < ApplicationController
     end
 
     def show
+        @article = Article.find(params[:id])
         @comments = @article.comments
     end
 
@@ -29,7 +29,4 @@ class ArticlesController < ApplicationController
         params.require(:article).permit(:content, images: []).merge(user_id: current_user.id)
     end
 
-    def set_article
-        @article = Article.find(params[:id])
-    end
 end

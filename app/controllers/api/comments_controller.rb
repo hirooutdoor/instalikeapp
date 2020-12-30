@@ -2,9 +2,11 @@ class Api::CommentsController < Api::ApplicationController
 
     def index
         article = Article.find(params[:article_id])
-        @comments = article.comments
+        comments = article.comments
+        user_id = comments.pluck(:user_id)
+        @user = User.where(id: user_id)
 
-        render json: @comments
+        render json: comments
     end
 
     def create
