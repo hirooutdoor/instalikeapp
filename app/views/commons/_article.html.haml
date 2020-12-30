@@ -19,7 +19,7 @@
                                 = image_tag 'active_like.png'
                             .article_heart.hidden.inactive-heart
                                 = image_tag 'like.png'
-                        = link_to = link_to article_path(id: article.id) do
+                        = link_to = link_to article_path(id: article.id, user_id: current_user.id) do
                             = image_tag 'comment.png'
                         = link_to 'https://twitter.com/share?ref_src=twsrc%5Etfw', target: '_blankz' do
                             = image_tag 'share.png'
