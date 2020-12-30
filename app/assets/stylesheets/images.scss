@@ -62,11 +62,11 @@
     grid-column: 2 / 3;
   }
   
-  .img {
-    width: 100%;
-    height: 100%;
-    // object-fit: cover;//画像が潰れることなく、親要素の枠いっぱいに表示されます。親要素の高さ・幅が変わっても自動でいいサイズになる
-  }
+//   .img {
+//     width: 100%;
+//     height: 100%;
+//     // object-fit: cover;//画像が潰れることなく、親要素の枠いっぱいに表示されます。親要素の高さ・幅が変わっても自動でいいサイズになる
+//   }
   
   .display-flex {
     display: flex;

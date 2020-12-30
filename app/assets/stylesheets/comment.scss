@@ -1,3 +1,7 @@
+
+$avatar-size: 32px;
+$container-margin: 16px;
+
 .inner {
     padding: 16px;
     .header {
@@ -15,61 +19,63 @@
             color: #333333
         }
     }
-    .comment_index {
-        .comment_account {
-            display: flex;
-            padding: 32px 0;
+    // .comment_index {
+    //         display: flex;
+    //         vertical-align:top; 
+    //         width: 100%;
+    //         margin: $container-margin;
+    //     .comment-account {
+    //             display: block;
+    //         img {
+    //             width: $avatar-size;
+    //             height: $avatar-size;
+    //             border-radius: 100%;
+    //             margin: 16px 6px;
+    //             }
+    //         }
+    //         .comment_wrap {
+                
+    //             display: block;
+    //             margin: 30px 16px;
+    //             .comment-account-info {
+    //                 height: 100%;
+    //                 margin-right: 10px;
+    //                 display: inline-block;
+    //                 a {
+    //                     font-size: 14px;
+    //                     color: #333333;
+    //                     text-decoration: none;
+    //                 }
+    //             }
+    //             .comment-info {
+    //                 height: 100%;
+    //                 color: #9B9B9B;
+    //                 display: inline-block;
+    //             }
+    //         }
 
-            a {
-                .avatar_present_img {
-                    width: 40px;
-                    height: 40px;
-                    border-radius: 50%;
-                    object-fit: cover;
-                }
-            }
-            .comment_wrap {
-                margin-left: 20px;
-                .comment_account_info {
-                    margin-bottom: 4px;
-                    a {
-                        font-size: 14px;
-                        color: #333333;
-                        text-decoration: none;
-                      
-                    }
-                }
-                .comment_body_right_content {
-                    color: #9B9B9B;
-                }
-            }
+    //     }
 
+    .comments {
+        clear :both;
+        margin-top: 30px;
+        &_image {
+            float: left;
+            margin-right: 20px;
+            width: 32px;
+            height: 32px;
+        }
+        &_name {
+            float: left;
+        }
+        &_content {
+            clear: both;
+            margin-left: 50px;
+            margin-bottom: 30px;
+            color: #9B9B9B;
         }
     }
-   
-    .comments_container {
-        .comment_wrap_container {
-            display: flex;
-            padding: 32px 0;
 
-            .avatar_present_img {
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                object-fit: cover;
-            }
-            .comment_wrap_avatar {
-                margin-left: 20px;
-                font-size: 14px;
-                color: #333333;
-                text-decoration: none;
-                .comment_wrap_put_content {
-                    color: #9B9B9B;
-                }
-            }
-        }
-
-    }
     .comment_new.show_comment_form {
         background-color: white;
         margin: 16px 0;
