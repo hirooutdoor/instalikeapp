@@ -21,18 +21,13 @@ const handleCommentForm = () => {
       $('.comment_text_area').removeClass('hidden')
     })
   }
-  
-  
+
   const appendNewComment = (comment) => {
-    $('.comment-info').append(
-      `<div class="user-account"><p>${(comment.content)}</p></div>`
-    )
-    $('.comment-account-info').append(
-      `<div class="comment-content"><p>${(comment.user.account_name)}</p></div>`
-    )
-    $('.comment-account').append(
-      `<div><img class="comment-avatar"src="/assets/${(comment.user.avatar_image)}"></img></div>`
-    )
+      $('.comments-container').append(
+        `<div><img class="comments_image"src="/assets/${(comment.user.avatar_image)}"></img></div>
+        <div class="comments_name"><p>${(comment.user.account_name)}</p></div>
+        <div class="comments_content"><p>${(comment.content)}</p></div>`
+      )
   }
 
 // comment func
@@ -48,7 +43,7 @@ const handleCommentForm = () => {
       })
   
       handleCommentForm()
-  
+
     $('.add_comment_btn').on('click', () => {
       const content = $('#comment_content').val()
       if (!content) {
