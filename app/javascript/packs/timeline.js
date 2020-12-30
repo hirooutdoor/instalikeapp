@@ -23,18 +23,18 @@ const handleCommentForm = () => {
   }
   
   
-  const appendNewComment = (comment, user) => {
+  const appendNewComment = (comment) => {
     $('.comment-info').append(
       `<div class="user-account"><p>${(comment.content)}</p></div>`
     )
-    $('.comment-info').append(
-      `<div class="comment-content"><p>${(comment.user_name)}</p></div>`
+    $('.comment-account-info').append(
+      `<div class="comment-content"><p>${(comment.user.account_name)}</p></div>`
     )
-    $('.comment-image').append(
-      `<div><img class="comment-avatar"src="${(comment.avatar_image)}"</img></div>`
+    $('.comment-account').append(
+      `<div><img class="comment-avatar"src="/assets/${(comment.user.avatar_image)}"></img></div>`
     )
   }
-  
+
 // comment func
   document.addEventListener('DOMContentLoaded', () => {
     const dataset = $('#article-show').data()
