@@ -15,9 +15,9 @@
                         = render 'commons/images', article: article
                     .timeline_content_icons
                         - if user_signed_in?
-                            .article_heart.hidden.active-heart
+                            .article_heart.hidden{ id: article.id, class: 'active-heart' }
                                 = image_tag 'active_like.png'
-                            .article_heart.hidden.inactive-heart
+                            .article_heart.hidden{ id: article.id, class: 'inactive-heart' }
                                 = image_tag 'like.png'
                         = link_to = link_to article_path(id: article.id, user_id: current_user.id) do
                             = image_tag 'comment.png'

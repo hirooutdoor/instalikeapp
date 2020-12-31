@@ -6,13 +6,13 @@ import {
 } from 'modules/handle_heart'
 
 // like def
-const handleHeartDisplay = (hasLiked) => {
-    if (hasLiked) {
-        $('.active-heart').removeClass('hidden')
-    } else {
-        $('.inactive-heart').removeClass('hidden')
-    }
-}
+// const handleHeartDisplay = (hasLiked) => {
+//     if (hasLiked) {
+//         $('#${articleId}.active-heart').removeClass('hidden')
+//     } else {
+//         $('#${articleId}.inactive-heart').removeClass('hidden')
+//     }
+// }
 
 // comment def
 const handleCommentForm = () => {
@@ -63,16 +63,42 @@ const handleCommentForm = () => {
 
 // like func
 document.addEventListener('DOMContentLoaded', () => {
-    const dataset = $('#article-show').data()
-    const articleId = dataset.articleId
 
-    axios.get(`/api/articles/${articleId}/like`)
+    $('.inactive-heart').on('click', () => {
+        const articleId = $(this).attr('id')
+        axios.post(`/api/articles/${articleId}/like`)
         .then((response) => {
-            const hasLiked = response.data.hasLiked
-            handleHeartDisplay(hasLiked)
+            if (response.data.status === 'ok') {
+                $('#${articleId}.active-heart').removeClass('hidden')
+                $('#${articleId}.inactive-heart').addClass('hidden')
+            }
+        }) 
+        .catch((e) => {
+            window.alert('Error')
+            console.log(e)
         })
+    })
 
-    listenInactiveHeartEvent(articleId)
-    listenActiveHeartEvent(articleId)
-})
+    $('.active-heart').on('click', () => {
+        const articleId = $(this).attr('id')
+        axios.delete(`/api/articles/${articleId}/like`)
+            .then((response) => {
+                if (response.data.status === 'ok') {
+                    $('#${articleId}.active-heart').addClass('hidden')
+                    $('#${articleId}.inactive-heart').removeClass('hidden')
+                }
+            }) 
+            .catch((e) => {
+                window.alert('Error')
+                console.log(e)
+            })
+    })
+    // axios.get(`/api/articles/${articleId}/like`)
+    //     .then((response) => {
+    //         const hasLiked = response.data.hasLiked
+    //         handleHeartDisplay(hasLiked)
+    //     })
+    // listenInactiveHeartEvent(articleId)
+    // listenActiveHeartEvent(articleId)
+    })
 
