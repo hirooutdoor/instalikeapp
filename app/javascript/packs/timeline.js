@@ -1,9 +1,9 @@
 import $ from 'jquery'
 import axios from 'modules/axios'
-import {
-    listenInactiveHeartEvent,
-    listenActiveHeartEvent
-} from 'modules/handle_heart'
+// import {
+//     listenInactiveHeartEvent,
+//     listenActiveHeartEvent
+// } from 'modules/handle_heart'
 
 // const handleHeartDisplay = (hasLiked) => {
 //     if (hasLiked) {

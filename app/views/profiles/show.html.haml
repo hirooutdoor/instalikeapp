@@ -7,7 +7,14 @@
             %p= current_user.account_name
 
     .border_room
-        = render 'form', profile: current_user
+        .profile_img_border
+            - if current_user.persisted? && current_user.avatar_image
+                = form_with model: @profile, url: profile_path, method: :put, local: true do |f|
+                    = image_tag current_user.avatar_image, class: 'profile_img', id: 'profile_avatar_prev'
+                    = f.file_field :avatar, class: "image", style: "display:none;", id: "file"
+                    = f.submit '', class: 'avatar hidden', style: "display:none;", id: 'file-btn'
+            - else 
+                = image_tag 'Ellipse.png'
 
     .numbers
         .numbers_post
@@ -20,3 +27,4 @@
             %p 100
             %P following
 
+= javascript_pack_tag 'profile'

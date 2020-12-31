@@ -3,17 +3,26 @@ class ProfilesController < ApplicationController
     before_action :authenticate_user!
 
     def show
+        @profile = current_user.profile
     end
 
-    # def create
-    #     user = User.create!(user_params)
-    #     session[:user_id] = user.id
-    #     redirect_to root_path
-    # end
+    def edit
+        @profile = current_user.prepare_profile
+    end
+
+    def update
+        @profile = current_user.prepare_profile
+        @profile.assign_attributes(profile_params)
+        if @profile.save!
+            render :show
+        else
+            render :show
+        end
+    end
 
     private
-    def user_params
-      params.require(:user).permit(:email, :password, :account_name, :avatar)
+    def profile_params
+      params.permit(:avatar)
     end
 
 end

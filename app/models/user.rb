@@ -53,7 +53,7 @@ class User < ApplicationRecord
   end
 
   def display_name
-    profile&.account_name || self.email.split('@').first
+    @profile&.account_name || self.email.split('@').first
   end
 
   def user_name
