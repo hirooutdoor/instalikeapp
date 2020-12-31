@@ -5,12 +5,11 @@ import {
     listenActiveHeartEvent
 } from 'modules/handle_heart'
 
-// like def
 // const handleHeartDisplay = (hasLiked) => {
 //     if (hasLiked) {
-//         $('#${articleId}.active-heart').removeClass('hidden')
+//         $('.active-heart').removeClass('hidden')
 //     } else {
-//         $('#${articleId}.inactive-heart').removeClass('hidden')
+//         $('.inactive-heart').removeClass('hidden')
 //     }
 // }
 
@@ -59,46 +58,45 @@ const handleCommentForm = () => {
           })
       }
     })
-})
-
-// like func
-document.addEventListener('DOMContentLoaded', () => {
-
-    $('.inactive-heart').on('click', () => {
-        const articleId = $(this).attr('id')
-        axios.post(`/api/articles/${articleId}/like`)
-        .then((response) => {
-            if (response.data.status === 'ok') {
-                $('#${articleId}.active-heart').removeClass('hidden')
-                $('#${articleId}.inactive-heart').addClass('hidden')
-            }
-        }) 
-        .catch((e) => {
-            window.alert('Error')
-            console.log(e)
-        })
-    })
-
-    $('.active-heart').on('click', () => {
-        const articleId = $(this).attr('id')
-        axios.delete(`/api/articles/${articleId}/like`)
+    // like func
+        // axios.get(`/api/articles/${articleId}/like`)
+        // .then((response) => {
+        //     const hasLiked = response.data.hasLiked
+        //     handleHeartDisplay(hasLiked)
+        // })
+    
+        $('.inactive-heart').on('click', function() {
+            const likeId = $(this).attr('id')
+            axios.post(`/api/articles/${likeId}/like`)
             .then((response) => {
                 if (response.data.status === 'ok') {
-                    $('#${articleId}.active-heart').addClass('hidden')
-                    $('#${articleId}.inactive-heart').removeClass('hidden')
+                    $(`#${likeId}.active-heart`).removeClass('hidden')
+                    $(`#${likeId}.inactive-heart`).addClass('hidden')
                 }
             }) 
-            .catch((e) => {
-                window.alert('Error')
-                console.log(e)
-            })
-    })
-    // axios.get(`/api/articles/${articleId}/like`)
-    //     .then((response) => {
-    //         const hasLiked = response.data.hasLiked
-    //         handleHeartDisplay(hasLiked)
-    //     })
+            // .catch((e) => {
+            //     window.alert('Error')
+            //     console.log(e)
+            // })
+        })
+    
+        $('.active-heart').on('click', function(){
+            const likeId = $(this).attr('id')
+            axios.delete(`/api/articles/${likeId}/like`)
+                .then((response) => {
+                    if (response.data.status === 'ok') {
+                        $(`#${likeId}.active-heart`).addClass('hidden')
+                        $(`#${likeId}.inactive-heart`).removeClass('hidden')
+                    }
+                }) 
+                // .catch((e) => {
+                //     window.alert('Error')
+                //     console.log(e)
+                // })
+        })
+})
+
+
     // listenInactiveHeartEvent(articleId)
     // listenActiveHeartEvent(articleId)
-    })
 
