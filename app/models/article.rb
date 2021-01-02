@@ -21,6 +21,9 @@ class Article < ApplicationRecord
     has_many :comments, dependent: :destroy
     has_many :liked_users, through: :likes, source: :user
 
+    validates :images, presence: true
+    validates :content, presence: true
+
     def author_name
         user.display_name
     end

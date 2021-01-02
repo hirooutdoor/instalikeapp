@@ -33,6 +33,12 @@
                                 = link_to 'https://twitter.com/share?ref_src=twsrc%5Etfw', target: '_blankz' do
                                     = image_tag 'share.png'
 
+                            - if user_signed_in? && current_user.has_written?(article)
+                                .dropdown
+                                    = image_tag 'actions.svg', class: 'dropbtn-sm'
+                                    .dropdown-content.mini
+                                        = link_to '削除する', article_path(article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか？' }
+
                         .article_content_likes
                             %p nezuko19 and 2,000 others liked
                         .article_content_texts
