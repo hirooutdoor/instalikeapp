@@ -4,14 +4,14 @@
             = link_to article_path(article) do
                 .timeline_article
                     .timeline_content
-                        = link_to profile_path do
-                            .timeline_content_top_avatar
+                        .timeline_content_top_avatar
+                            = link_to account_path(article.user) do
                                 = image_tag article.user.avatar_image
-                            .timeline_content_top_info
-                                .content_author
-                                    %p= article.author_name
-                                .content_created
-                                    %p= article.created_at
+                        .timeline_content_top_info
+                            .content_author
+                                %p= article.author_name
+                            .content_created
+                                %p= article.created_at
                         .timeline_content_image
                             = render 'commons/images', article: article
                         .article_icons

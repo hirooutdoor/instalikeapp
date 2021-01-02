@@ -10,6 +10,13 @@ Rails.application.routes.draw do
 
   resource :profile
 
+  resources :accounts, only: [:show] do
+    resource :follow, only: [:show, :create]
+    resource :unfollow, only: [:create]
+    resources :followings, only: [:index]
+    resources :followers, only: [:index]
+  end
+
   namespace :api, defaults: {format: :json} do
     scope '/articles/:article_id' do
       resource :like, only: [:show, :create, :destroy]
