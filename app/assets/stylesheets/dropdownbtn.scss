@@ -1,6 +1,7 @@
 @import './variables';
 
 .dropbtn {
+  margin-top: 20px;
   border: none;
   cursor: pointer;
 }
@@ -27,8 +28,6 @@ display: inline-block;
     width: 32px;
   }
 
-
-  
 }
 
 .dropdown-content {

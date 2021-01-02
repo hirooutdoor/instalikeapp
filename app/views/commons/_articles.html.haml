@@ -1,9 +1,9 @@
 .container
-  = render 'commons/tabs'
-  - articles.each do |article|
-    = render 'commons/article', article: article
   = link_to new_article_path do
     .float_btn
-      %i.fa.fa-plus
+      =image_tag 'camera.png'
+  - articles.each do |article|
+    = render 'commons/article', article: article
+  
       
 = javascript_pack_tag 'timeline'
