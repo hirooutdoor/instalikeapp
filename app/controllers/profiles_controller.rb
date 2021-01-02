@@ -13,11 +13,9 @@ class ProfilesController < ApplicationController
     def update
         @profile = current_user.prepare_profile
         @profile.assign_attributes(profile_params)
-        if @profile.save!
-            render :show
-        else
-            render :show
-        end
+        @profile.save!
+
+        render :show
     end
 
     private
