@@ -35,6 +35,9 @@ class User < ApplicationRecord
   validates :account_name, presence: true, uniqueness: true
   validates :email, uniqueness: true
 
+  def has_written?(article)
+    articles.exists?(id: article.id)
+  end
 
   def has_liked?(article)
     likes.exists?(article_id: article.id)
