@@ -49,6 +49,8 @@ group :development do
 
   gem 'annotate'
   gem 'html2haml'
+  gem 'letter_opener'
+  gem 'letter_opener_web', '~> 1.0'
 end
 
 group :test do
