@@ -23,5 +23,16 @@
     padding: 16px 0;
     font-weight: bold;
     border-radius: 10px;
-  }
-  
+}
+
+.float_btn {
+    position: relative;
+    top: 16px;
+    left: 16px;
+    cursor: pointer;
+    img {
+        width: 20px;
+        height: 20px;
+    }
+    
+}
