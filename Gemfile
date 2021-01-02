@@ -29,6 +29,7 @@ gem 'active_model_serializers'
 gem 'hamlit-rails'
 gem 'rubocop-rails'
 gem 'devise'
+gem 'sidekiq'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -49,6 +50,8 @@ group :development do
 
   gem 'annotate'
   gem 'html2haml'
+  gem 'letter_opener'
+  gem 'letter_opener_web', '~> 1.0'
 end
 
 group :test do

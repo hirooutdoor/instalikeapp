@@ -21,5 +21,10 @@ class Comment < ApplicationRecord
     belongs_to :user
     belongs_to :article
 
+    after_create :send_email
 
+    private
+    def send_email
+        CommentMailer.new_comment(user, article).deliver_later
+    end
 end
