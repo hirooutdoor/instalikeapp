@@ -1,11 +1,13 @@
 $avatar-size: 32px;
 $container-padding: 12px;
+$icon-margin: 5px;
+
 
 .timeline_body {
     margin-top: 46px;
     
     .timeline_article {
-    margin-top: 100px;
+    margin-top: 50px;
     display: flex;
 
         .timeline_content {
@@ -37,32 +39,47 @@ $container-padding: 12px;
                 }
             }
 
-            // &_icons {
-            //     &_heart {
-
-            //     }
-
-            //     &_comment {
-
-            //     }
-
-            //     &_share {
-
-            //     }
-            // }
 
             &_image img {
-                height: 180px;
+                max-height: 100%;
+                max-width: 100%;
                 position: relative;
                 overflow: hidden;
                 margin: $container-padding $container-padding; 
             }
 
-            &_likes, &_texts {
-                font-size: 12px;
-            }
         }
     }
+}
+
+.article {
+            &_content {
+                &_likes, &_texts {
+                    display: block;
+                    
+                    font-size: 12px;
+                }
+            }
+        &_icons {
+            display: flex;
+            &_heart {
+                display: inline-block;
+            }
+
+            &_comment {
+                display: inline-block;
+                img{
+                    margin-left: $icon-margin;
+                    }
+            }
+
+            &_share {
+                display: inline-block;
+                img{
+                    margin-left: $icon-margin;
+                    }
+            }
+        }
 }
 
 // .slideshow {

@@ -1,39 +1,42 @@
-.article#article-show{data: {article_id: article.id}}
-    .timeline_body
-        = link_to article_path(article) do
-            .timeline_article
-                .timeline_content
-                    = link_to profile_path do
-                        .timeline_content_top_avatar
-                            = image_tag article.user.avatar_image
-                        .timeline_content_top_info
-                            .content_author
-                                %p= article.author_name
-                            .content_created
-                                %p= article.created_at
-                    .timeline_content_image
-                        = render 'commons/images', article: article
-                    .timeline_content_icons
-                        - if user_signed_in? && current_user.has_liked?(article)
-                            .article_heart{ id: article.id, class: 'active-heart' }
-                                = image_tag 'active_like.png'
-                            .article_heart.hidden{ id: article.id, class: 'inactive-heart' }
-                                = image_tag 'like.png'
-                        - else
-                            .article_heart.hidden{ id: article.id, class: 'active-heart' }
-                                = image_tag 'active_like.png'
-                            .article_heart{ id: article.id, class: 'inactive-heart' }
-                                = image_tag 'like.png'
+.container
+    .article#article-show{data: {article_id: article.id}}
+        .timeline_body
+            = link_to article_path(article) do
+                .timeline_article
+                    .timeline_content
+                        = link_to profile_path do
+                            .timeline_content_top_avatar
+                                = image_tag article.user.avatar_image
+                            .timeline_content_top_info
+                                .content_author
+                                    %p= article.author_name
+                                .content_created
+                                    %p= article.created_at
+                        .timeline_content_image
+                            = render 'commons/images', article: article
+                        .article_icons
+                            - if user_signed_in? && current_user.has_liked?(article)
+                                .article_icons_heart{ id: article.id, class: 'active-heart' }
+                                    = image_tag 'active_like.png'
+                                .article_icons_heart.hidden{ id: article.id, class: 'inactive-heart' }
+                                    = image_tag 'like.png'
+                            - else
+                                .article_icons_heart.hidden{ id: article.id, class: 'active-heart' }
+                                    = image_tag 'active_like.png'
+                                .article_icons_heart{ id: article.id, class: 'inactive-heart' }
+                                    = image_tag 'like.png'
 
-                        = link_to = link_to article_path(id: article.id, user_id: current_user.id) do
-                            = image_tag 'comment.png'
-                        = link_to 'https://twitter.com/share?ref_src=twsrc%5Etfw', target: '_blankz' do
-                            = image_tag 'share.png'
+                            .article_icons_comment
+                                = link_to = link_to article_path(id: article.id, user_id: current_user.id) do
+                                    = image_tag 'comment.png'
+                            .article_icons_share
+                                = link_to 'https://twitter.com/share?ref_src=twsrc%5Etfw', target: '_blankz' do
+                                    = image_tag 'share.png'
 
-                    .timeline_content_likes
-                        %p nezuko19 and 2,000 others liked
-                    .timeline_content_texts
-                        %p= article.author_name
-                        %p= article.content
+                        .article_content_likes
+                            %p nezuko19 and 2,000 others liked
+                        .article_content_texts
+                            %p= article.author_name
+                            %p= article.content
 
-= javascript_pack_tag 'timeline'
+    = javascript_pack_tag 'timeline'
