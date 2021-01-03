@@ -1,0 +1,39 @@
+.container
+    .profile_header
+        .back_arrow
+            = link_to 'javascript:history.back()' do
+                %i.fas.fa-arrow-left
+        .account_name
+            %p= user.account_name
+        .follow_btn
+            - if user == current_user
+                = link_to '', profile_path
+            - else
+                - if current_user&.has_followed?(user)
+                    -# = link_to 'Unfollow', account_unfollows_path(user), data: {method: 'post'}
+                    = link_to 'Unfollow', '#'
+                - else
+                    -# = link_to 'Follow', account_follows_path(user), data: {method: 'post'}
+                    = link_to 'Follow', '#'
+    .border_room
+        .profile_img_border
+            - if user.persisted? && user.avatar_image
+                = form_with model: @profile, url: profile_path, method: :put, local: true do |f|
+                    = image_tag user.avatar_image, class: 'profile_img', id: 'profile_avatar_prev'
+                    = f.file_field :avatar, class: "image", style: "display:none;", id: "file"
+                    = f.submit '', class: 'avatar hidden', style: "display:none;", id: 'file-btn'
+            - else 
+                = image_tag 'Ellipse.png'
+
+    .numbers
+        .numbers_post
+            %p 44
+            %P Posts
+        .numbers_followers
+            %p 22
+            %P followers
+        .numbers_following
+            %p 100
+            %P following
+
+= javascript_pack_tag 'profile'

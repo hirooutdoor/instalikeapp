@@ -17,6 +17,22 @@ $avatar-size: 76.88px;
         display: inline-block;
         font-size: 16px;
     }
+
+    .follow_btn {
+        display: inline-block;
+        text-align: center;
+        margin: 10px auto;
+        font-family: Poppins;
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
+      
+    // .follow_btn:active {
+    // /*ボタンを押したとき*/
+    // -webkit-transform: translateY(2px);
+    // transform: translateY(2px);/*下に動く*/
+    // border-bottom: none;/*線を消す*/
+    // }
 }
 
 .profile_img_border {
@@ -77,4 +93,5 @@ $avatar-size: 76.88px;
     
     .hidden {
     display: none;
-  }
+}
+
