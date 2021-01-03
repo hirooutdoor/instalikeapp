@@ -10,11 +10,11 @@
                 = link_to '', profile_path
             - else
                 - if current_user&.has_followed?(user)
-                    -# = link_to 'Unfollow', account_unfollows_path(user), data: {method: 'post'}
-                    = link_to 'Unfollow', '#'
+                    = link_to 'Unfollow', account_unfollows_path(user), data: {method: 'post'}
+                    -# = link_to 'Unfollow', '#'
                 - else
-                    -# = link_to 'Follow', account_follows_path(user), data: {method: 'post'}
-                    = link_to 'Follow', '#'
+                    = link_to 'Follow', account_follows_path(user), data: {method: 'post'}
+                    -# = link_to 'Follow', '#'
     .border_room
         .profile_img_border
             - if user.persisted? && user.avatar_image
