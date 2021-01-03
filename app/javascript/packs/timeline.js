@@ -1,17 +1,5 @@
 import $ from 'jquery'
 import axios from 'modules/axios'
-// import {
-//     listenInactiveHeartEvent,
-//     listenActiveHeartEvent
-// } from 'modules/handle_heart'
-
-// const handleHeartDisplay = (hasLiked) => {
-//     if (hasLiked) {
-//         $('.active-heart').removeClass('hidden')
-//     } else {
-//         $('.inactive-heart').removeClass('hidden')
-//     }
-// }
 
 // comment def
 const handleCommentForm = () => {
@@ -58,12 +46,6 @@ const handleCommentForm = () => {
           })
       }
     })
-    // like func
-        // axios.get(`/api/articles/${articleId}/like`)
-        // .then((response) => {
-        //     const hasLiked = response.data.hasLiked
-        //     handleHeartDisplay(hasLiked)
-        // })
     
         $('.inactive-heart').on('click', function() {
             const likeId = $(this).attr('id')
@@ -96,7 +78,4 @@ const handleCommentForm = () => {
         })
 })
 
-
-    // listenInactiveHeartEvent(articleId)
-    // listenActiveHeartEvent(articleId)
 

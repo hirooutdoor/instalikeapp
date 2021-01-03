@@ -31,3 +31,48 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
   })
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const dataset = $('#account-show').data()
+    const accountId = dataset.accountId
+
+    // axios.get(`/accounts/${accountId}/follows/id`)
+    //     .then((response) => {
+    //         const hasFollowed = response.data.hasFollowed
+    //         if (hasFollowed) {
+    //             $('.unfollow').removeClass('hidden')
+    //         } else {
+    //             $('.follow').removeClass('hidden')
+    //         } 
+    //     })
+
+        $('.follow').on('click', () => {
+            axios.post(`/accounts/${accountId}/follows`)
+            .then((response) => {
+                if (response.data.status === 'ok') {
+                    $('.unfollow').removeClass('hidden')
+                    $('.follow').addClass('hidden')
+                //   $('.profile-num2').text(`${response.data.followCount}`)
+                }
+            })
+            .catch((e) => {
+                window.alert('Error')
+                console.log(e)
+            })
+        })
+
+        $('.unfollow').on('click', () => {
+            axios.post(`/accounts/${accountId}/unfollows`)
+            .then((response) => {
+                if (response.data.status === 'ok') {
+                $('.follow').removeClass('hidden')
+                $('.unfollow').addClass('hidden')
+                //   $('.profile-num2').text(`${response.data.followCount}`)
+                }
+            })
+            .catch((e) => {
+            window.alert('Error')
+            console.log(e)
+            })
+        })
+    })
