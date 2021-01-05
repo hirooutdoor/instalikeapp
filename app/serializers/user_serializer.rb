@@ -28,5 +28,4 @@ class UserSerializer < ActiveModel::Serializer
     def comment_avatar_image
         rails_blob_path(object.avatar_image) if object.avatar_image.attached?
     end
-
 end

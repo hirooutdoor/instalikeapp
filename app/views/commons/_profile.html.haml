@@ -5,18 +5,14 @@
                 %i.fas.fa-arrow-left
         .account_name
             %p= user.account_name
-        .follow_btn#account-show{data: {account_id: user.id, follower_id: current_user.id}}
+        .follow_btn
             - if user == current_user
                 = link_to '', profile_path
             - else
-                - if current_user&.has_followed?(user)
-                    .unfollow.hidden
-                        = link_to 'Unfollow', account_unfollows_path(user), data: {method: 'post'}
-                        -# = link_to 'Unfollow', '#'
-                - else
-                    .follow.hidden
-                        = link_to 'Follow', account_follows_path(user), data: {method: 'post'}
-                        -# = link_to 'Follow', '#'
+                .unfollow.hidden#account-show{data: {account_id: user.id, id: current_user.id}}
+                    -# = link_to 'Unfollow', '#'
+                .follow.hidden#account-show{data: {account_id: user.id, id: current_user.id}}
+                    -# = link_to 'Follow', '#'
     .border_room
         .profile_img_border
             - if user.persisted? && user.avatar_image

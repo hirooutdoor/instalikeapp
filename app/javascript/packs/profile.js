@@ -36,15 +36,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const dataset = $('#account-show').data()
     const accountId = dataset.accountId
 
-    // axios.get(`/accounts/${accountId}/follows/id`)
-    //     .then((response) => {
-    //         const hasFollowed = response.data.hasFollowed
-    //         if (hasFollowed) {
-    //             $('.unfollow').removeClass('hidden')
-    //         } else {
-    //             $('.follow').removeClass('hidden')
-    //         } 
-    //     })
+    axios.get(`/accounts/${accountId}/follows/id`)
+        .then((response) => {
+            const hasFollowed = response.data.hasFollowed
+            if (hasFollowed) {
+                $('.unfollow').removeClass('hidden')
+            } else {
+                $('.follow').removeClass('hidden')
+            } 
+        })
 
         $('.follow').on('click', () => {
             axios.post(`/accounts/${accountId}/follows`)
